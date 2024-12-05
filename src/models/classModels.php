@@ -14,8 +14,16 @@ class ClassModel{
             $query->bindPram(":sigla", $sigla);
             $query->bindPram(":classe", $classe);
             return $query->execute();
-        } catch (PDOExpection $e) {
+        } catch (PDOExcepection $e) {
             echo "erro", $e->getMessage();
+        }
+    }
+
+    public function buscarTurma(){
+        try {
+            //code...
+        } catch (PDOException $e) {
+            //throw $th;
         }
     }
 
