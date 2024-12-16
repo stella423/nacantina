@@ -1,7 +1,7 @@
 <?php
 
-   require_once "/..models/classModels.php";
-   require_once "/..config/database.php";
+   require_once "../models/classModels.php";
+   require_once "../config/database.php";
 
 class ClassController{
     private $connection;
@@ -12,12 +12,13 @@ class ClassController{
         $this->model = new ClassModel($this->connection->getConnection());
 
     } 
-    public function adcionarAluno($id, $sigla, $classe){
-        return $this->model->adicionarAluno($id, $sigla, $classe);
+    public function addCionarAluno($idTurma, $sigla, $classe){
+        return $this->model->addCionarAluno($idTurma, $sigla, $classe);
 
     }
-    public function removerAluno(){
-        return $this->model->removerAluno();
+    public function buscarAluno(){
+        return $this->model->buscarAluno();
     }
+    
 }
 ?>

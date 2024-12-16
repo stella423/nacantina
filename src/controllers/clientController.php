@@ -1,7 +1,7 @@
 <?php
 
-require_once "/..models/clientModels.php";
-require_once "/..config/database.php";
+require_once "../models/clientModels.php";
+require_once "../config/database.php";
 
 class ClientController{
 
@@ -17,11 +17,16 @@ class ClientController{
     public function cadastro($id, $nome, $telefone, $senha, $tipoCliente){
         echo" Senha controller ",$senha;
         return $this->model->cadastro($id, $nome, $telefone, $senha, $tipoCliente);
+    }    
+
+    public function buscarClientes( ){
+        return $this->model->buscarClientes();
+    }
+    public function buscarCliente($coluna, $valor ){
+        return $this->model->buscarCliente($coluna, $valor);
     }
 
-    public function buscarCliente($sql){
-        return $this->model->buscarCliente($sql);
-    }
+
 
     public function deletar(){
         return $this->model->deletar();
