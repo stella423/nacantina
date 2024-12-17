@@ -14,9 +14,9 @@ class ClientController{
         $this->model = new ClientModel($this->connection->getConnection());
     }
 
-    public function cadastro($id, $nome, $telefone, $senha, $tipoCliente){
+    public function cadastro( $nome, $telefone, $senha, $tipoCliente){
         echo" Senha controller ",$senha;
-        return $this->model->cadastro($id, $nome, $telefone, $senha, $tipoCliente);
+        return $this->model->cadastro( $nome, $telefone, $senha, $tipoCliente);
     }    
 
     public function buscarClientes( ){
@@ -28,12 +28,12 @@ class ClientController{
 
 
 
-    public function deletar(){
-        return $this->model->deletar();
+    public function deletar($id){
+        return $this->model->deletar($id);
     }
 
-    public function update(){
-        return $this->model->update();
+    public function editar($id, $nome, $telefone, $senha, $tipoCliente){
+        return $this->model->editar($id, $nome, $telefone, $senha, $tipoCliente);
     }
 
 

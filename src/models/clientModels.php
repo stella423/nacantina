@@ -7,11 +7,11 @@ class ClientModel{
         $this->connection=$connection;
 
     } 
-    public function cadastro($id, $nome, $telefone, $senha, $tipoCliente){
-        echo" Senha controller ",$senha;
+    public function cadastro( $nome, $telefone, $senha, $tipoCliente){
+       
        try { 
-        $query->$this->connection=prepare("INSERT INTO cliente (id, nome, telefone, senha, tipoCliente) VALUES (:id, :nome, :telefone, :senha, :tipoCliente)");
-        $query->bindParam(':id', $id);
+        $query=$this->connection->prepare("INSERT INTO cliente ( nome, telefone, senha, tipoCliente) VALUES ( :nome, :telefone, :senha, :tipoCliente)");
+     
         $query->bindParam(':nome', $nome);
         $query->bindParam(':telefone', $telefone);
         $query->bindParam(':senha', $senha);
@@ -20,6 +20,7 @@ class ClientModel{
 
        }catch (PDOException $e) {
         echo "senha errada". $e->getMessage();
+        
         
        }  
 
@@ -53,6 +54,36 @@ class ClientModel{
             echo "erro". $e->getMessage();
         }
 
+    }
+
+    public function editar($id, $nome, $telefone, $senha, $tipoCliente ){
+        try {
+            $sql = "UPDATE cliente SET nome = :nome, telefone = :telefone, senha = :senha, tipoCliente= :tipoCliente WHERE id=:id";
+            $query = $this->connection ->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->bindParam(':nome', $nome);
+            $query->bindParam(':telefone', $telefone);
+            $query->bindParam(':senha', $senha);
+            $query->bindParam(':tipoCliente', $tipoCliente);
+            return $query->execute();
+            
+
+        } catch (PDOException $e) {
+         echo "erro".$e->getMessage();
+        }
+
+    }
+    
+
+    public function deletar($id){
+        try {
+            $sql = " DELETE FROM cliente WHERE id =:id";
+            $query=$this->connection->prepare($sql);
+            $query->bindParam(':id', $id);
+            return $query->execute();
+        } catch (PDOException $e) {
+           echo "erro".$e->getMessage();
+        }
     }
 
     
