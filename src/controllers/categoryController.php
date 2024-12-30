@@ -12,13 +12,16 @@ class CategoryController{
         $this->model = new CategoryModel($this->connection->getConnection());
     }
 
-    public function adicionarCategoria($idCategoria, $nome){
-        return $this->model->adicionarCategoria($idCategoria, $nome);
+    public function adicionarCategoria( $nome){
+        return $this->model->adicionarCategoria( $nome);
 
     }
     public function buscarCategoria(){
         return $this->model->buscarCategoria();
-    }     
+    }   
+    public function deletar($id){
+        return $this->model->deletar($id);
+    }  
 
 }
 ?>

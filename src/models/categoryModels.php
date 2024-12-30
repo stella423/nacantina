@@ -6,11 +6,11 @@ class CategoryModel{
         $this->connection=$connection;
     }
 
-    public function adicionarCategoria($idCategoria, $nome){
+    public function adicionarCategoria( $nome){
         try {
-            $query=$this->connection->prepare("INSERT INTO Categoria(idCategoria, nome) VALUES (:idCategoria, :nome)");
-            $query->bindParam(':idCategoria', $idCategoria);
-            $query->bindParam(':nome', $nome);
+            $query=$this->connection->prepare("INSERT INTO Categoria(categoria) VALUES ( :categoria)");
+          
+            $query->bindParam(':categoria', $nome);
             return $query->execute();
         } catch (PDOException $e) {
            echo "erro". $e->getMessage();
@@ -24,6 +24,17 @@ class CategoryModel{
             return $result;
         } catch (PDOException $e) {
            echo "wrong".$e->getMessage();
+        }
+    }
+    public function deletar($idCategoria){
+        try {
+            $sql = ("DELETE FROM categoria WHERE idCategoria=:idCategoria ");
+            $query=$this->connection->prepare($sql);
+            $query->bindParam(':idCategoria', $idCategoria);
+            return $query->execute();
+
+        } catch (PDOException $e) {
+           echo "erro",$e->getMessage();
         }
     }
 
