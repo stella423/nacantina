@@ -21,7 +21,10 @@ class CategoryController{
     }   
     public function deletar($id){
         return $this->model->deletar($id);
-    }  
+    }
+    public function update($categoria, $idCategoria){
+        return $this->model->update($categoria, $idCategoria);
+    }
 
 }
 ?>

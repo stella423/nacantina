@@ -37,6 +37,17 @@ class CategoryModel{
            echo "erro",$e->getMessage();
         }
     }
+    public function update($categoria, $idCategoria){
+       try {
+        $sql = "UPDATE categoria SET categoria=:categoria WHERE idCategoria=:idCategoria";
+        $query = $this->connection-> prepare($sql);
+        $query->bindParam(':categoria', $categoria);
+        $query->bindParam(':idCategoria', $idCategoria);
+        return $query->execute();
+       } catch (PDOException $e) {
+         echo "erro". $e->getMessage();
+       }
+    }
 
 }
 ?>
